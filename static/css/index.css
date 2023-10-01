@@ -1,0 +1,50 @@
+
+/* intro */
+.intro {
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+.intro-heading {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.intro-heading h1 {
+    font-size: 5rem;
+    color: #66FCF1;
+}
+
+.intro-content {
+    margin-bottom: 2rem;
+}
+
+.intro-content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #ffffff69;
+}
+
+.intro-btn {
+    margin-bottom: 1rem;
+}
+
+.intro-btn a{
+    border: 1px solid #66FCF1;
+    padding: 1rem;
+    color: #66FCF1;
+}
+
+
+
+/* Responsive */
+
+@media screen and (max-width:700px) {
+    .intro {
+        width: 80%;
+    }
+}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} TEAMLET {% endblock title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/blogs.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="blogs">
+        <div class="blog-search">
+            <div class="search-input">
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="search-button">
+                <button>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </button>
+            </div>
+
+        </div>
+        
+        <div class="pin">
+            <h1>Pinned Blogs <i class="fa-solid fa-circle-check"></i></h1>
+            <div class="blogs-section">
+                {% for blog in pinnedblogs %}
+                <div class="blog-card">
+                    <img src="{{blog.img.url}}" alt="hi">
+                    <h2>{{blog.title}}</h2>
+                    <span>{{blog.body | truncatewords_html:10 | safe}}</span>
+                    <button><a href="{% url 'blog_detail' blog.id %}">Read More</a></button>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+        <div class="recent">
+            <h1>Recent Blogs <i class="fa-solid fa-circle-check"></i></h1>
+            <div class="blogs-section">
+                {% for blog in blogs %}
+                <div class="blog-card">
+                    <img src="{{blog.img.url}}" alt="hi">
+                    <h2>{{blog.title}}</h2>
+                    <span>{{blog.body | truncatewords_html:10 | safe}}</span>
+                    <button><a href="{% url 'blog_detail' blog.id %}">Read More</a></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% for key, value in categories.items%}
+        {% if value%} 
+        <div class="category">
+            <h1>{{key}} <i class="fa-solid fa-circle-check"></i></h1>
+            <div class="blogs-section">
+
+                {% for blog in value%}
+                <div class="blog-card">
+                    <img src="{{blog.img.url}}" alt="">
+                    <h2>{{blog.title}}</h2>
+                    <span>{{blog.body | truncatewords_html:10 | safe}}</span>
+                    <button><a href="{% url 'blog_detail' blog.id%}">Read More</a></button>
+                </div>
+                {% endfor %}
+            
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+{% endblock content %}

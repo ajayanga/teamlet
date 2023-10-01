@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} TEAMLET {% endblock title %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="intro">
+        <div class="intro-heading">
+            <h1>Hello!</h1>
+        </div>
+        <div class="intro-content">
+            <p>Welcome to a world of inspiration and knowledge. Here, your curiosity knows no bounds, and your imagination has endless possibilities.😉</p>
+        </div>
+        <div class="intro-btn">
+            <a href="{% url 'blogs' %}">Read My Blogs -></a>
+        </div>
+    </div>
+{% endblock content %}
+
